@@ -1,0 +1,72 @@
+
+<mat-card class="main-card" >  
+    <h2>Criar Produto {{'-'}}</h2>
+    <!--sigelu-breadcrumbs [crumbs]="[ { nome: 'Home', caminho:'/' }, { nome:'Viagens', caminho:'/viagens' }, { nome: tituloBreadcumb, caminho: ''} ]"></sigelu-breadcrumbs-->
+    <hr>
+  <mat-card>
+    <form [formGroup]="produtoFormGroup">
+
+        <div class="row">
+            <mat-form-field class="col-lg-3 col-md-3 col-sm-12">
+            <input placeholder="Nome do Produto" matInput formControlName="dataPlanejada" > 
+            </mat-form-field>
+        </div>
+    
+        <div class="row">
+            <mat-form-field class="col-lg-3 col-md-3 col-sm-12">
+            <mat-select placeholder="Tipo" formControlName="rota">
+                <mat-option>
+                {{'produto.nome'}}
+                </mat-option>
+            </mat-select>
+            </mat-form-field>
+        </div>
+
+      <!--div class="row">
+        <mat-form-field class="col-lg-3 col-md-3 col-sm-12">
+          <input #dataPlanejada placeholder="Data planejada" matInput [matDatepicker]="pickerData" formControlName="dataPlanejada" 
+          [min]="minDate" (keyup)="onKeyupData($event)" (focusout)="onFocusoutData($event)"
+          (dateChange)="limparSelects(); onFocusoutData($event)" minlength="10"> 
+          <mat-datepicker-toggle matSuffix [for]="pickerData"></mat-datepicker-toggle>
+          <mat-datepicker #pickerData></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field class="col-lg-3 col-md-3 col-sm-12">
+          <mat-select placeholder="Veí­culo" formControlName="veiculo" (selectionChange)="changeMotorista($event.value)"
+          [disabled]="desativarComboVeiculos()">
+            <mat-option> Selecione um VeÃ­culo</mat-option>
+            <mat-option *ngFor="let veiculo of veiculos" [value]="veiculo.id">
+              {{veiculo.placa}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field class="col-lg-3 col-md-3 col-sm-12">
+          <input matInput placeholder="Peso Liq. ResÃ­duo(Kg)" formControlName="residuoColetado" #residuo (keypress)="numberOnly($event)" type="text">
+        </mat-form-field>
+        <button class="upload" type="button" (click)="fileInput.click()" [disabled]="residuo.value == ''" [ngClass]="{'arquivo': residuo.value == ''}">
+          <span>Escolher arquivo</span>
+          <input #fileInput type="file" (change)="selecionarImagem($event)" accept='image/*' style="display:none;"/>
+        </button> 
+        <p id="arquivoNome"></p>
+      </div-->
+
+      <br>
+      <div class="row" style="width: 100%; display: flex; flex-direction: initial;">
+        <div class="col-lg-10 col-md-1 col-sm-12" style="width: 90%;">
+            <a mat-raised-button [routerLinkActive]="'active'" (click)="cancelar()">Cancelar</a>
+        </div>
+        <div class="col-lg-2 col-md-11 col-sm-12" style="width: 10%; margin-left: -50px;">
+          <a class="salvar-button" mat-raised-button [routerLinkActive]="'active'" [disabled]="!produtoFormGroup.valid" 
+          (click)="executarServico()">
+            Salvar
+          </a>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+</mat-card>

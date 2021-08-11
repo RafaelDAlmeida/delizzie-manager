@@ -1,27 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ManagerModule } from './manager/manager.module';
-ManagerModule
-
+import { AuthGuard } from './shared/guard/auth.guard';
 
 const routes: Routes = [
-  {
-    path: '',
-    loadChildren: './manager/manager.module#ManagerModule',
-    //canActivate: [AuthGuard]
-  },
-  // {
-  //   path: 'error/:error',
-  //   component: ErrorComponent
-  // },
-  // {
-  //     path: '**',
-  //     redirectTo: 'error/404'
-  // }
+    {
+        path: '',
+        loadChildren: () => import('./layout/layout.module').then(m => m.LayoutModule),
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'login',
+        loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
+    }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule],
+    providers: [AuthGuard]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
