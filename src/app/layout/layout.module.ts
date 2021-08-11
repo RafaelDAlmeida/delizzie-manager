@@ -6,6 +6,7 @@ import { MatTableModule } from '@angular/material/table';
 import { TranslateModule } from '@ngx-translate/core';
 import { MaterialModule } from '../shared/modules/material/material.module';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SigeluBreadcrumbsModule } from './components/sigelu-breadcrumbs/sigelu-breadcrumbs.module';
 import { TopnavComponent } from './components/topnav/topnav.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
@@ -19,7 +20,8 @@ import { Screen2Component } from './screen2/screen2.component';
         TranslateModule,
         MatPaginatorModule,
         MatTableModule,
-        MatSortModule
+        MatSortModule,
+        SigeluBreadcrumbsModule
     ],
     declarations: [
         Screen2Component,
